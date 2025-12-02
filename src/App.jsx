@@ -1,0 +1,58 @@
+import { Routes, Route, Navigate } from "react-router-dom";
+import "./App.css";
+import LoginForm from "./components/Auth/LoginForm";
+import SignupForm from "./components/Auth/SignupForm";
+import Header from "./components/Header";
+import NotFound from "./components/NotFound";
+import ForgetForm from "./components/Auth/ForgetForm";
+import ExpensePage from "./pages/ExpensePage";
+import { useSelector } from "react-redux";
+import SummaryPage from "./pages/SummaryPage";
+
+function App() {
+  const token = useSelector((state) => state.auth.token);
+  const isLoggedIn = !!token;
+
+  return (
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+
+        <Route
+          path="/login"
+          element={
+            isLoggedIn ? <Navigate to="/expense" replace /> : <LoginForm />
+          }
+        />
+
+        <Route
+          path="/signup"
+          element={
+            isLoggedIn ? <Navigate to="/expense" replace /> : <SignupForm />
+          }
+        />
+
+        <Route path="/forgetForm" element={<ForgetForm />} />
+
+        <Route
+          path="/expense"
+          element={
+            isLoggedIn ? <ExpensePage /> : <Navigate to="/login" replace />
+          }
+        />
+
+        <Route
+          path="/summary"
+          element={
+            isLoggedIn ? <SummaryPage /> : <Navigate to="/login" replace />
+          }
+        />
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
+  );
+}
+
+export default App;

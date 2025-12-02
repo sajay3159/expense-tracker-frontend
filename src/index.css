@@ -1,0 +1,9 @@
+body.light {
+  background-color: #fff;
+  color: #000;
+}
+
+body.dark {
+  background-color: #1c1d1e;
+  color: #fff;
+}
