@@ -4,7 +4,6 @@ import LoginForm from "./components/Auth/LoginForm";
 import SignupForm from "./components/Auth/SignupForm";
 import Header from "./components/Header";
 import NotFound from "./components/NotFound";
-import ForgetForm from "./components/Auth/ForgetForm";
 import ExpensePage from "./pages/ExpensePage";
 import { useSelector } from "react-redux";
 import SummaryPage from "./pages/SummaryPage";
@@ -32,8 +31,6 @@ function App() {
             isLoggedIn ? <Navigate to="/expense" replace /> : <SignupForm />
           }
         />
-
-        <Route path="/forgetForm" element={<ForgetForm />} />
 
         <Route
           path="/expense"
