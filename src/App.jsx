@@ -7,6 +7,7 @@ import NotFound from "./components/NotFound";
 import ExpensePage from "./pages/ExpensePage";
 import { useSelector } from "react-redux";
 import SummaryPage from "./pages/SummaryPage";
+import VerifyEmail from "./components/Auth/VerifyEmail";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -24,6 +25,7 @@ function App() {
             isLoggedIn ? <Navigate to="/expense" replace /> : <LoginForm />
           }
         />
+        <Route path="/verify-email/:token" element={<VerifyEmail />} />
 
         <Route
           path="/signup"
