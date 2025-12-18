@@ -10,7 +10,7 @@ const VerifyEmail = () => {
   const verify = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/auth/verify-email/${token}`
+        `https://expense-tracker-backend-ut31.onrender.com/api/auth/verify-email/${token}`
       );
       const data = await res.json();
 
